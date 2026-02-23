@@ -12,6 +12,30 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Force sidebar always visible with a glowing toggle button
+st.markdown("""
+<style>
+[data-testid="collapsedControl"] {
+    display: flex !important;
+    background: #7c6af7 !important;
+    border-radius: 0 8px 8px 0 !important;
+    width: 2rem !important;
+    height: 3rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    top: 50% !important;
+    box-shadow: 4px 0 15px rgba(124, 106, 247, 0.5) !important;
+}
+[data-testid="collapsedControl"] svg { fill: white !important; }
+@media (min-width: 768px) {
+    section[data-testid="stSidebar"] {
+        min-width: 320px !important;
+        max-width: 320px !important;
+    }
+}
+</style>
+""", unsafe_allow_html=True)
+
 # ─── Custom CSS ─────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
@@ -397,6 +421,24 @@ with col_title:
     st.markdown('<h1 class="main-title">DocuMind AI</h1>', unsafe_allow_html=True)
     st.markdown('<p class="subtitle">Upload documents · Ask questions · Get cited answers</p>', unsafe_allow_html=True)
 
+# Sidebar hint — shown only when sidebar might be collapsed
+st.markdown("""
+<div style="
+    background: rgba(124,106,247,0.08);
+    border: 1px dashed rgba(124,106,247,0.3);
+    border-radius: 10px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.82rem;
+    color: #a89cf7;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+">
+    👈 <strong>Don't see the upload panel?</strong> &nbsp;Click the <strong> &gt; </strong> arrow on the left edge or press <kbd style="background:#1e1e2e;border:1px solid #444;border-radius:4px;padding:1px 6px;font-size:0.8rem;">S</kbd> to open the sidebar
+</div>
+""", unsafe_allow_html=True)
+
 st.markdown("")
 
 # ─── Welcome / Empty State ───────────────────────────────────────────────────
@@ -519,4 +561,5 @@ else:
                 st.rerun()
             except Exception as e:
                 st.error(f"Error generating answer: {str(e)}")
+
 
