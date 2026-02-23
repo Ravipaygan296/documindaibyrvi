@@ -327,7 +327,7 @@ if "api_key_set" not in st.session_state:
 # ─── API Config (Loaded from Streamlit Secrets — never hardcode keys!) ───────
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 PROVIDER     = "groq"
-MODEL_NAME   = "llama3-8b-8192"
+MODEL_NAME   = "llama-3.3-70b-versatile"
 
 # ─── Sidebar ─────────────────────────────────────────────────────────────────
 with st.sidebar:
@@ -519,3 +519,4 @@ else:
                 st.rerun()
             except Exception as e:
                 st.error(f"Error generating answer: {str(e)}")
+
