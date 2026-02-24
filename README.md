@@ -48,7 +48,7 @@ Answer + Source Citations
 ### 1. Clone & Install
 
 ```bash
-git clone https://github.com/yourusername/documind-ai.git
+git clone https://github.com/Ravipaygan296/documind-ai.git
 cd documind-ai
 pip install -r requirements.txt
 ```
